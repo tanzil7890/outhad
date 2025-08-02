@@ -1,0 +1,15 @@
+{
+  "data": {
+    "name": "MicrosoftExcel",
+    "title": "Microsoft Excel",
+    "connector_type": "destination",
+    "category": "Database",
+    "documentation_url": "https://docs.squared.ai/guides/destinations/retl-destinations/productivity-tools/microsoft-excel",
+    "github_issue_label": "destination-microsoft-excel",
+    "icon": "icon.svg",
+    "license": "MIT",
+    "release_stage": "alpha",
+    "support_level": "community",
+    "tags": ["language:ruby", "outhad"]
+  }
+}

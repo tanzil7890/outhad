@@ -1,0 +1,16 @@
+{
+  "data": {
+    "name": "AmazonS3",
+    "title": "Amazon S3",
+    "connector_type": "source",
+    "category": "Data Lake",
+    "sub_category": "Relational Database",
+    "documentation_url": "https://docs.squared.ai/guides/sources/data-sources/amazon_s3",
+    "github_issue_label": "source-amazons3",
+    "icon": "icon.svg",
+    "license": "MIT",
+    "release_stage": "alpha",
+    "support_level": "community",
+    "tags": ["language:ruby", "outhad"]
+  }
+}

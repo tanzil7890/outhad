@@ -1,0 +1,46 @@
+{
+  "documentation_url": "https://docs.squared.ai/guides/destinations/retl-destinations/crm/salesforce",
+  "stream_type": "static",
+  "connection_specification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Salesforce CRM",
+    "type": "object",
+    "required": [
+      "access_token",
+      "refresh_token",
+      "instance_url",
+      "client_id",
+      "client_secret"
+    ],
+    "properties": {
+      "access_token": {
+        "type": "string",
+        "outhad_secret": true,
+        "title": "Access Token",
+        "order": 0
+      },
+      "refresh_token": {
+        "type": "string",
+        "outhad_secret": true,
+        "title": "Refresh Token",
+        "order": 1
+      },
+      "instance_url": {
+        "type": "string",
+        "title": "Instance URL",
+        "order": 2
+      },
+      "client_id": {
+        "type": "string",
+        "title": "Client ID",
+        "order": 3
+      },
+      "client_secret": {
+        "type": "string",
+        "outhad_secret": true,
+        "title": "Client Secret",
+        "order": 4
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "data": {
+    "name": "Sftp",
+    "title": "SFTP",
+    "connector_type": "destination",
+    "connectorSubtype": "file",
+    "category": "File Storage",
+    "documentation_url": "https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/sftp",
+    "github_issue_label": "destination-sftp",
+    "icon": "icon.svg",
+    "license": "MIT",
+    "release_stage": "alpha",
+    "support_level": "community",
+    "tags": ["language:ruby", "outhad"]
+  }
+}

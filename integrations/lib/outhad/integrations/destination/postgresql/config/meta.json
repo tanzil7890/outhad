@@ -1,0 +1,15 @@
+{
+  "data": {
+    "name": "Postgresql",
+    "title": "PostgreSQL",
+    "connector_type": "destination",
+    "category": "Database",
+    "documentation_url": "https://docs.squared.ai/guides/destinations/retl-destinations/database/postgresql",
+    "github_issue_label": "destination-postgresql",
+    "icon": "icon.svg",
+    "license": "MIT",
+    "release_stage": "alpha",
+    "support_level": "community",
+    "tags": ["language:ruby", "outhad"]
+  }
+}

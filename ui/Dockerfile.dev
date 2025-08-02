@@ -1,0 +1,25 @@
+# Use a Node.js image
+FROM node:18-alpine
+
+# Set the working directory in the Docker container
+WORKDIR /app
+
+# ENV Variable
+ENV VITE_API_HOST='https://api.outhad.com'
+
+# Copy package.json and package-lock.json (or yarn.lock if using Yarn)
+COPY package.json package-lock.json* ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy the rest of your application code
+COPY . .
+
+# ENV Variable
+ENV VITE_API_HOST='https://api.outhad.com'
+
+EXPOSE 8000
+
+# Command to run the Vite development server
+CMD ["npm", "run", "dev", "--", "--host"]
