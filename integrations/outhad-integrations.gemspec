@@ -16,9 +16,9 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.6.0"
 
   # spec.metadata["allowed_push_host"] = nil
-  spec.metadata["github_repo"] = "https://github.com/Outhad/outhad"
+  spec.metadata["github_repo"] = "https://github.com/tanzil7890/outhad"
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/Outhad/outhad/tree/main/integrations"
+  spec.metadata["source_code_uri"] = "https://github.com/tanzil7890/outhad/tree/main/integrations"
   #spec.metadata["changelog_uri"] = "https://github.com/Outhad/outhad/blob/main/integrations/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
