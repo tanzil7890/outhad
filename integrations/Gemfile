@@ -1,0 +1,97 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+# Specify your gem's dependencies in outhad-integrations.gemspec
+gemspec
+
+gem "rake", "~> 13.0"
+
+gem "rspec", "~> 3.0"
+
+gem "rubocop", "~> 1.21"
+
+gem "dry-schema"
+
+gem "dry-struct"
+
+gem "dry-types"
+
+gem "byebug"
+
+gem "sequel"
+
+gem "pg"
+
+gem "ruby-odbc", git: "https://github.com/Outhad-Search/ruby-odbc.git"
+
+gem "webmock", "~> 3.0"
+
+gem "activesupport"
+
+gem "google-apis-sheets_v4"
+
+gem "google-cloud-bigquery"
+
+gem "restforce", "~> 7.1.0"
+
+gem "slack-ruby-client"
+
+gem "async-websocket", "~> 0.8.0"
+
+gem "git"
+
+gem "hubspot-api-client", "~> 17.2.0"
+
+gem "ruby-limiter"
+
+gem "stripe"
+
+gem "net-sftp"
+
+gem "csv"
+
+gem "aws-sdk-athena"
+
+gem "rubyzip"
+
+gem "faraday"
+
+gem "aws-sdk-s3"
+
+gem "duckdb"
+
+gem "iterable-api-client"
+
+gem "mysql2"
+
+gem "aws-sdk-sts"
+
+gem "ruby-oci8", "~> 2.2.12"
+
+gem "aws-sdk-sagemaker"
+
+gem "aws-sdk-sagemakerruntime"
+
+gem "google-cloud-ai_platform-v1"
+
+gem "tiny_tds"
+
+gem "MailchimpMarketing"
+
+gem "aws-sdk-bedrockruntime"
+
+gem "pinecone"
+
+gem "intuit-oauth"
+
+gem "nokogiri"
+
+gem "xmlrpc", "~> 0.3.3"
+
+gem "builder", "~> 3.3"
+
+group :development, :test do
+  gem "simplecov", require: false
+  gem "simplecov_json_formatter", require: false
+end

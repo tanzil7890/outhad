@@ -1,0 +1,15 @@
+{
+  "data": {
+    "name": "GoogleSheets",
+    "title": "Google Sheets",
+    "connector_type": "destination",
+    "category": "Productivity Tools",
+    "documentation_url": "https://docs.squared.ai/guides/destinations/retl-destinations/productivity-tools/google-sheets",
+    "github_issue_label": "destination-google-sheets",
+    "icon": "icon.svg",
+    "license": "MIT",
+    "release_stage": "alpha",
+    "support_level": "community",
+    "tags": ["language:ruby", "outhad"]
+  }
+}

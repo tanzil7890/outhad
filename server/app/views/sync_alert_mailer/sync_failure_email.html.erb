@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+
+      .sync-info-label {
+        color: #667085;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 6px;
+        text-align: left;
+      }
+
+      .sync-info-value {
+        color: #101828;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 6px;
+        text-align: left;
+      }
+
+      .info-table {
+        width: 100%;
+        margin-top: 20px;
+        border-spacing: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td align="center">
+          <table style="width: 100%; max-width: 600px; background: #f9fafb; padding: 20px; border-radius: 12px; border: 1px solid #eaecf0;">
+            <tr>
+              <td align="center" style="padding: 12px;">
+                <img
+                  src="https://res.cloudinary.com/dspflukeu/image/upload/v1746630317/Outhad/ais-logo_fyn2uv.png"
+                  style="max-width: 178px;"
+                  alt="AI Squared Logo"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td style="background: white; border-radius: 8px; border: 1px solid #eaecf0; padding: 48px 16px; text-align: center;">
+                <h1 style="color: rgb(167, 41, 41); font-size: 28px; font-weight: 700; margin: 0 0 16px;">
+                  Sync Run Failed
+                </h1>
+                <p style="color: #475467; font-size: 14px; font-weight: 400; margin-bottom: 20px;">
+                  <%= "Your sync #{@alert_attrs[:name]} failed due to some errors." %>
+                </p>
+                <a href="<%= @sync_run_url %>" style="background: #00249c; color: white; font-size: 14px; font-weight: 700; border-radius: 6px; padding: 10px 20px; display: inline-block; text-decoration: none;"> 
+                  View Sync Run 
+                </a>
+
+                <table class="info-table">
+                  <tr>
+                    <td class="sync-info-label">Sync Name</td>
+                    <td class="sync-info-value"><%= @alert_attrs[:name] %></td>
+                  </tr>
+                  <tr>
+                    <td class="sync-info-label">End Time</td>
+                    <td class="sync-info-value"><%= @alert_attrs[:end_time].strftime("%b %d, %Y %I:%M %p") %></td>
+                  </tr>
+                  <tr>
+                    <td class="sync-info-label">Duration</td>
+                    <td class="sync-info-value"><%= @alert_attrs[:duration] %> Seconds</td>
+                  </tr>
+                  <tr>
+                    <td class="sync-info-label">Sync ID</td>
+                    <td class="sync-info-value"><%= @alert_attrs[:sync_id] %></td>
+                  </tr>
+                  <tr>
+                    <td class="sync-info-label">Sync Run ID</td>
+                    <td class="sync-info-value"><%= @alert_attrs[:sync_run_id] %></td>
+                  </tr>
+                  <tr>
+                    <td class="sync-info-label">Error</td>
+                    <td class="sync-info-value"><%= @alert_attrs[:error] %></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 24px 12px; text-align: center; font-size: 12px; color: #98a2b3;">
+                <div style="margin-bottom: 8px;">
+                  <a href="#" style="color: #98a2b3; text-decoration: underline;">Our Blog</a> |
+                  <a href="#" style="color: #98a2b3; text-decoration: underline;">Docs</a> |
+                  <a href="#" style="color: #98a2b3; text-decoration: underline;">Contact Us</a>
+                </div>
+                <div>AI Squared, 1300 I Street NW, Suite 400 E, Washington, DC 20005</div>
+                <div>© <%= Time.current.year %> AI Squared. All Rights Reserved.</div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

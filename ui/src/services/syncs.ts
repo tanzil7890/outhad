@@ -1,0 +1,122 @@
+import {
+  CreateSyncPayload,
+  CreateSyncResponse,
+  DiscoverResponse,
+  SyncRecordResponse,
+  SyncsConfigurationForTemplateMapping,
+  SyncRunsResponse,
+  TriggerManualSyncPayload,
+  ChangeSyncStatusPayload,
+} from '@/views/Activate/Syncs/types';
+import { outhadFetch, ApiResponse, APIRequestMethod } from './common';
+import { buildUrlWithParams } from './utils';
+
+export const getCatalog = (
+  connectorId: string,
+  refresh: boolean = false,
+): Promise<ApiResponse<DiscoverResponse>> =>
+  outhadFetch<null, ApiResponse<DiscoverResponse>>({
+    method: 'get',
+    url: `/connectors/${connectorId}/discover?refresh=${refresh}`,
+  });
+
+export const createSync = (payload: CreateSyncPayload): Promise<ApiResponse<CreateSyncResponse>> =>
+  outhadFetch<CreateSyncPayload, ApiResponse<CreateSyncResponse>>({
+    method: 'post',
+    url: '/syncs',
+    data: payload,
+  });
+
+export const fetchSyncs = (): Promise<ApiResponse<CreateSyncResponse[]>> =>
+  outhadFetch<null, ApiResponse<CreateSyncResponse[]>>({
+    method: 'get',
+    url: `/syncs`,
+  });
+
+export const getSyncById = (id: string): Promise<ApiResponse<CreateSyncResponse>> =>
+  outhadFetch<null, ApiResponse<CreateSyncResponse>>({
+    method: 'get',
+    url: `/syncs/${id}`,
+  });
+
+export const getSyncRunsBySyncId = (
+  id: string,
+  page: string = '1',
+): Promise<ApiResponse<Array<SyncRunsResponse>>> =>
+  outhadFetch<null, ApiResponse<Array<SyncRunsResponse>>>({
+    method: 'get',
+    url: `/syncs/${id}/sync_runs?page=${page}&per_page=10`,
+  });
+
+export const getSyncRunById = (
+  syncId: string,
+  syncRunId: string,
+): Promise<ApiResponse<SyncRunsResponse>> =>
+  outhadFetch<null, ApiResponse<SyncRunsResponse>>({
+    method: 'get',
+    url: `/syncs/${syncId}/sync_runs/${syncRunId}`,
+  });
+
+export const getSyncRecords = (
+  syncId: string,
+  runId: string,
+  page: string = '1',
+  isFiltered: boolean = false,
+  status: string = 'success',
+): Promise<ApiResponse<Array<SyncRecordResponse>>> =>
+  outhadFetch<null, ApiResponse<Array<SyncRecordResponse>>>({
+    method: 'get',
+    url: buildUrlWithParams(`/syncs/${syncId}/sync_runs/${runId}/sync_records`, {
+      page,
+      per_page: '10',
+      status: isFiltered ? status : undefined,
+    }),
+  });
+
+export const editSync = (
+  payload: CreateSyncPayload,
+  id: string,
+): Promise<ApiResponse<CreateSyncResponse>> =>
+  outhadFetch<CreateSyncPayload, ApiResponse<CreateSyncResponse>>({
+    method: 'put',
+    url: `/syncs/${id}`,
+    data: payload,
+  });
+
+export const deleteSync = (id: string): Promise<ApiResponse<CreateSyncResponse>> =>
+  outhadFetch<null, ApiResponse<CreateSyncResponse>>({
+    method: 'delete',
+    url: `/syncs/${id}`,
+  });
+
+export const getSyncsConfiguration = (): Promise<SyncsConfigurationForTemplateMapping> =>
+  outhadFetch<null, SyncsConfigurationForTemplateMapping>({
+    method: 'get',
+    url: `/syncs/configurations`,
+  });
+
+export const triggerManualSync = (
+  payload: TriggerManualSyncPayload,
+  method: APIRequestMethod,
+): Promise<ApiResponse<CreateSyncResponse>> =>
+  outhadFetch<TriggerManualSyncPayload, ApiResponse<CreateSyncResponse>>({
+    method,
+    url: '/schedule_syncs',
+    data: payload,
+  });
+
+export const cancelManualSyncSchedule = (id: string): Promise<ApiResponse<CreateSyncResponse>> =>
+  outhadFetch<null, ApiResponse<CreateSyncResponse>>({
+    method: 'delete',
+    url: `/schedule_syncs/${id}`,
+  });
+
+export const changeSyncStatus = (
+  id: string,
+  payload: ChangeSyncStatusPayload,
+): Promise<ApiResponse<CreateSyncResponse>> =>
+  outhadFetch<ChangeSyncStatusPayload, ApiResponse<CreateSyncResponse>>({
+    method: 'patch',
+    url: `/syncs/${id}/enable`,
+    data: payload,
+  });

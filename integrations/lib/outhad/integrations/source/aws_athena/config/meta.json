@@ -1,0 +1,16 @@
+{
+  "data": {
+    "name": "AwsAthena",
+    "title": "AWS Athena",
+    "connector_type": "source",
+    "category": "Data Warehouse",
+    "sub_category": "Relational Database",
+    "documentation_url": "https://docs.squared.ai/guides/sources/data-sources/aws_athena",
+    "github_issue_label": "source-aws-athena",
+    "icon": "icon.svg",
+    "license": "MIT",
+    "release_stage": "alpha",
+    "support_level": "community",
+    "tags": ["language:ruby", "outhad"]
+  }
+}
