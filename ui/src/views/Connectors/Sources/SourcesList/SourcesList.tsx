@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Box } from '@chakra-ui/react';
 import { FiPlus } from 'react-icons/fi';
+import { useEffect } from 'react';
 import TopBar from '@/components/TopBar';
 import { SOURCES_LIST_QUERY_KEY } from '@/views/Connectors/constant';
 import { getUserConnectors } from '@/services/connectors';
@@ -24,21 +25,26 @@ const SourcesList = (): JSX.Element | null => {
     refetchOnWindowFocus: false,
   });
 
+  useEffect(() => {
+    if (data?.errors) {
+      data.errors?.forEach((error) => {
+        showToast({
+          duration: 5000,
+          isClosable: true,
+          position: 'bottom-right',
+          colorScheme: 'red',
+          status: CustomToastStatus.Warning,
+          title: titleCase(error.detail),
+        });
+      });
+    }
+  }, [data?.errors, showToast]);
+
   if (isLoading) return <Loader />;
 
   if (data?.data?.length === 0 || !data) return <NoConnectors connectorType='source' />;
 
   if (data?.errors) {
-    data.errors?.forEach((error) => {
-      showToast({
-        duration: 5000,
-        isClosable: true,
-        position: 'bottom-right',
-        colorScheme: 'red',
-        status: CustomToastStatus.Warning,
-        title: titleCase(error.detail),
-      });
-    });
     return <NoConnectors connectorType='source' />;
   }
 
