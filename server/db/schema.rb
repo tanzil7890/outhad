@@ -606,18 +606,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_27_000141) do
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "workflows", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer "workspace_id", null: false
-    t.string "name", null: false
-    t.text "description"
-    t.integer "status"
-    t.integer "trigger_type"
-    t.jsonb "configuration", default: {}
-    t.string "token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["workspace_id", "name"], name: "index_workflows_on_workspace_id_and_name", unique: true
   end
 
