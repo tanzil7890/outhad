@@ -4,6 +4,7 @@ module Api
   module V1
     class AuthController < ApplicationController
       include Authentication
+      skip_before_action :require_workspace
       before_action :authenticate_user!, only: [:logout]
       skip_after_action :verify_authorized
 
