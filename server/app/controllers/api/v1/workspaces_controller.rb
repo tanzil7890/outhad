@@ -7,6 +7,7 @@ module Api
       include Workspaces
       include AuditLogger
       include ResourceLinkBuilder
+      skip_before_action :require_workspace, only: %i[index show]
       skip_after_action :verify_authorized, only: %i[index show]
       after_action :create_audit_log, only: %i[create update]
 

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::API
   include ScriptVault::Tracker
   include Pundit::Authorization
   before_action :authenticate_user!
+  before_action :require_workspace
   before_action :validate_contract
   around_action :handle_with_exception
   after_action :verify_authorized
@@ -22,6 +23,10 @@ class ApplicationController < ActionController::API
 
     # If not authenticated, return a 401 unauthorized response
     render_error(message: "Unauthorized", status: :unauthorized)
+  end
+
+  def require_workspace
+    current_workspace
   end
 
   def current_workspace
