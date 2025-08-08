@@ -25,10 +25,7 @@ RUN unzip duckdb.zip -d libduckdb
 RUN mv libduckdb/duckdb.* /usr/local/include
 RUN mv libduckdb/libduckdb.so /usr/local/lib
 
-# Unzip and Install DuckDB HTTPFS Extension 
-RUN ./gethttpfsextension.sh && \
-    gunzip httpfs.duckdb_extension.gz && \
-    mv httpfs.duckdb_extension /home/rails/.duckdb/extensions/v1.0.0/linux_arm64/
+# DuckDB HTTPFS Extension will be installed after user creation
 
 RUN ldconfig /usr/local/lib
 
@@ -50,7 +47,7 @@ RUN apt-get update -qq && \
 WORKDIR /
 
 # Clone the repository
-RUN git clone https://github.com/Outhad/outhad-dependencies.git outhad-dependencies
+RUN git clone https://github.com/Outhad-Search/outhad-dependencies.git outhad-dependencies
 
 WORKDIR /outhad-dependencies/unixODBC-2.3.11
 
@@ -111,8 +108,10 @@ RUN if [ "$TARGETARCH" = "amd64" ] || [ "$TARGETARCH" = "x86_64" ]; then \
 WORKDIR /rails
 
 # Install application gems
-COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
+COPY Gemfile ./
+COPY Gemfile.lock* ./
+RUN bundle config build.duckdb --with-duckdb-lib=/usr/local/lib --with-duckdb-include=/usr/local/include && \
+    bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
@@ -130,7 +129,8 @@ RUN apt-get update -qq && \
 # Create the required directories and Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
     mkdir -p /rails/db /rails/log /rails/storage /rails/tmp && \
-    chown -R rails:rails /rails/db /rails/log /rails/storage /rails/tmp
+    chmod +x gethttpfsextension.sh && ./gethttpfsextension.sh && \
+    chown -R rails:rails /rails/db /rails/log /rails/storage /rails/tmp /home/rails/.duckdb
 
 USER rails:rails
 

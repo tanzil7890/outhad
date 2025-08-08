@@ -1,4 +1,3 @@
-version: "3"
 services:
   # This section is for the Temporal services
   postgresql:
@@ -61,7 +60,7 @@ services:
   outhad-server:
     build:
       context: ./server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       args:
         TARGETARCH: ${TARGETARCH:-amd64}
     ports:
@@ -71,19 +70,19 @@ services:
       - redis
       - temporal
     env_file: .env
-  outhad-ui:
-    build:
-      context: ./ui
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
-    depends_on:
-      - outhad-server
+  #outhad-ui:
+  #  build:
+  #    context: ./ui
+  #    dockerfile: Dockerfile
+  #  ports:
+  #    - "8000:8000"
+  #  depends_on:
+  #    - outhad-server
   # This section is for the Temporal Worker
   outhad-worker:
     build:
       context: ./server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     depends_on:
       - db
       - redis

@@ -7,4 +7,4 @@ case "$MACHINE" in
   "aarch64" ) ARC=aarch64 ;;
 esac
 
-wget -O duckdb.zip "https://github.com/duckdb/duckdb/releases/download/v1.0.0/libduckdb-linux-$ARC.zip"
+wget -O duckdb.zip "https://github.com/duckdb/duckdb/releases/download/v1.2.0/libduckdb-linux-$ARC.zip"
