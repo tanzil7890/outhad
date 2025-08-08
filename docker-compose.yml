@@ -70,6 +70,16 @@ services:
       - redis
       - temporal
     env_file: .env
+    volumes:
+      - ./server:/rails:cached
+      - rails-bundle-cache:/usr/local/bundle
+      - rails-node-modules:/rails/node_modules
+      - rails-tmp:/rails/tmp
+    environment:
+      - RAILS_ENV=development
+      - BUNDLE_PATH=/usr/local/bundle
+    stdin_open: true
+    tty: true
   #outhad-ui:
   #  build:
   #    context: ./ui
@@ -88,8 +98,19 @@ services:
       - redis
       - temporal
     env_file: .env
+    volumes:
+      - ./server:/rails:cached
+      - rails-bundle-cache:/usr/local/bundle
+      - rails-node-modules:/rails/node_modules
+      - rails-tmp:/rails/tmp
+    environment:
+      - RAILS_ENV=development
+      - BUNDLE_PATH=/usr/local/bundle
     command: sh -c "./app/temporal/cli/register_namespace && ./app/temporal/cli/worker"
 # Volumes for the database and redis
 volumes:
   mw-pg-data:
   mw-redis-data:
+  rails-bundle-cache:
+  rails-node-modules:
+  rails-tmp:

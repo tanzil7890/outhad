@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+# Install any new gems
+bundle check || bundle install
+
+# Remove any existing server PID file
+rm -f tmp/pids/server.pid
+
+# If running the rails server then create or migrate existing database
+if [ "${1}" == "bundle" ] && [ "${2}" == "exec" ] && [ "${3}" == "rails" ] && [ "${4}" == "server" ]; then
+  ./bin/rails db:prepare
+  ./bin/rails data:migrate
+fi
+
+# Execute the given command
+exec "$@"
