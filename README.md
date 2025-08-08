@@ -58,3 +58,19 @@ UI can be accessed at the PORT 8000 :
 ```bash
 http://localhost:8000
 ```
+
+
+# Start development environment (hot-reload enabled)
+./dev.sh start
+
+# View API server logs
+./dev.sh logs-api
+
+# Open Rails console for debugging
+./dev.sh console
+
+# Open shell in container
+./dev.sh shell
+
+# Stop environment
+./dev.sh stop
