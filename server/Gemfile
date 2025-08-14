@@ -14,7 +14,7 @@ gem "interactor", "~> 3.0"
 
 gem "ruby-odbc", git: "https://github.com/cloudvolumes/ruby-odbc.git"
 
-gem "outhad-integrations", "~> 0.32.0"
+gem "outhad-integrations", path: "/integrations"
 
 gem "temporal-ruby", github: "coinbase/temporal-ruby"
 
@@ -79,6 +79,7 @@ group :development do
   # gem "spring"  # Speeds up Rails commands
   gem "annotate"
   gem "letter_opener"
+  gem "listen", "~> 3.8"  # File system watcher for hot-reload
   gem "rubocop", require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
@@ -112,3 +113,4 @@ gem "premailer-rails"
 gem "prometheus-client", "~> 4.2"
 
 gem "xmlrpc", "~> 0.3.3"
+

@@ -59,8 +59,8 @@ services:
       - mw-redis-data:/data
   outhad-server:
     build:
-      context: ./server
-      dockerfile: Dockerfile.dev
+      context: .
+      dockerfile: ./server/Dockerfile.dev
       args:
         TARGETARCH: ${TARGETARCH:-amd64}
     ports:
@@ -92,8 +92,8 @@ services:
   # This section is for the Temporal Worker
   outhad-worker:
     build:
-      context: ./server
-      dockerfile: Dockerfile.dev
+      context: .
+      dockerfile: ./server/Dockerfile.dev
     depends_on:
       - db
       - redis
