@@ -5,7 +5,7 @@
     "connector_type": "source",
     "category": "Data Warehouse",
     "sub_category": "Relational Database",
-    "documentation_url": "https://docs.squared.ai/guides/sources/data-sources/aws_athena",
+    "documentation_url": "https://docs.outhad.ai/guides/sources/data-sources/aws_athena",
     "github_issue_label": "source-aws-athena",
     "icon": "icon.svg",
     "license": "MIT",

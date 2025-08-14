@@ -4,7 +4,7 @@
     "title": "Amazon S3",
     "connector_type": "source",
     "category": "File Storage",
-    "documentation_url": "https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/amazon_s3",
+    "documentation_url": "https://docs.outhad.ai/guides/destinations/retl-destinations/file-storage/amazon_s3",
     "github_issue_label": "source-amazons3",
     "icon": "icon.svg",
     "license": "MIT",

@@ -4,7 +4,7 @@
     "title": "Odoo",
     "connector_type": "destination",
     "category": "Database",
-    "documentation_url": "https://docs.squared.ai/guides/destinations/retl-destinations/database/odoo",
+    "documentation_url": "https://docs.outhad.ai/guides/destinations/retl-destinations/database/odoo",
     "github_issue_label": "destination-odoo",
     "icon": "icon.svg",
     "license": "MIT",

@@ -1,5 +1,5 @@
 {
-  "documentation_url": "https://docs.squared.ai/activation/vector_search/qdrant",
+  "documentation_url": "https://docs.outhad.ai/activation/vector_search/qdrant",
   "stream_type": "user_defined",
   "connector_query_type": "vector_search",
   "connection_specification": {

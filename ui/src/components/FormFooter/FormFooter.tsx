@@ -71,7 +71,7 @@ const FormFooter = ({
         <Box display='flex' paddingX='16px' paddingY='10px'>
           {isDocumentsSectionRequired ? (
             <>
-              <Link to='https://docs.squared.ai/guides/core-concepts'>
+              <Link to='https://docs.outhad.com/guides/core-concepts'>
                 <Box display='flex' alignItems='center' marginRight='20px'>
                   <Icon as={FiBookOpen} color='gray.600' />
                   <Text ml={2} size='sm'>
@@ -80,7 +80,7 @@ const FormFooter = ({
                 </Box>
               </Link>
               <Link
-                to='https://join.slack.com/t/outhad/shared_invite/zt-2bnjye26u-~lu_FFOMLpChOYxvovep7g'
+                to='https://slack.outhad.com'
                 target='_blank'
               >
                 <Box display='flex' alignItems='center'>

@@ -5,7 +5,7 @@
       "connector_type": "source",
       "category": "Data Warehouse",
       "sub_category": "Web Scraper",
-      "documentation_url": "https://docs.squared.ai/guides/sources/data-sources/firecrawl",
+      "documentation_url": "https://docs.outhad.ai/guides/sources/data-sources/firecrawl",
       "github_issue_label": "source-firecrawl",
       "icon": "icon.svg",
       "license": "MIT",

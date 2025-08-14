@@ -5,7 +5,7 @@
       "connector_type": "source",
       "category": "AI Model",
       "sub_category": "AI_ML Service",
-      "documentation_url": "https://docs.squared.ai/guides/sources/data-sources/databricks-model",
+      "documentation_url": "https://docs.outhad.ai/guides/sources/data-sources/databricks-model",
       "github_issue_label": "source-databricks-foundation",
       "icon": "icon.svg",
       "license": "MIT",

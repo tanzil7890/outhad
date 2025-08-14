@@ -35,7 +35,7 @@ export const SyncsListColumns: ColumnDef<CreateSyncResponse>[] = [
       return +activeWorkspaceId === 18 &&
         destination.connector_name.toLowerCase() === 'postgresql' ? (
         <EntityItem
-          icon='https://squared.ai/wp-content/uploads/2024/03/apple-touch-icon.png'
+          icon='https://outhad.com/wp-content/uploads/2024/03/apple-touch-icon.png'
           name='AIS Datastore'
         />
       ) : (

@@ -4,7 +4,7 @@
     "title": "Odoo",
     "connector_type": "source",
     "category": "Database",
-    "documentation_url": "https://docs.squared.ai/guides/sources/data-sources/odoo",
+    "documentation_url": "https://docs.outhad.ai/guides/sources/data-sources/odoo",
     "github_issue_label": "source-odoo",
     "icon": "icon.svg",
     "license": "MIT",

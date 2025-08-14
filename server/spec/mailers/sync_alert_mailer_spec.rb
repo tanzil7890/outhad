@@ -26,7 +26,7 @@ RSpec.describe SyncAlertMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Sync run success")
       expect(mail.to).to eq(["test@ais.com"])
-      expect(mail.from).to eq(["ai2-mailer@squared.ai"])
+      expect(mail.from).to eq(["ai2-mailer@outhad.ai"])
     end
 
     it "renders the body" do
@@ -55,7 +55,7 @@ RSpec.describe SyncAlertMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Sync run failed")
       expect(mail.to).to eq(["test@ais.com"])
-      expect(mail.from).to eq(["ai2-mailer@squared.ai"])
+      expect(mail.from).to eq(["ai2-mailer@outhad.ai"])
     end
 
     it "renders the body" do
@@ -85,7 +85,7 @@ RSpec.describe SyncAlertMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Sync completed with failed rows")
       expect(mail.to).to eq(["test@ais.com"])
-      expect(mail.from).to eq(["ai2-mailer@squared.ai"])
+      expect(mail.from).to eq(["ai2-mailer@outhad.ai"])
     end
 
     it "renders the body" do

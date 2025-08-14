@@ -5,7 +5,7 @@
     "connector_type": "source",
     "category": "Database",
     "sub_category": "Vector Database",
-    "documentation_url": "https://docs.squared.ai/activation/vector_search/qdrant",
+    "documentation_url": "https://docs.outhad.ai/activation/vector_search/qdrant",
     "github_issue_label": "source-qdrant",
     "icon": "icon.svg",
     "license": "MIT",

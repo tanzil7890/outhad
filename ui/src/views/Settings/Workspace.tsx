@@ -136,7 +136,7 @@ const Workspace = () => {
             >
               <Box>
                 <Text size='sm' fontWeight={500}>
-                  app.squared.ai/
+                  app.outhad.com/
                 </Text>
               </Box>
               <Divider orientation='vertical' height='24px' color='gray.400' />

@@ -58,7 +58,7 @@ const menus: MenuArray = [
         title: 'Audiences',
         link: '/audiences',
         Icon: FiUsers,
-        disabled: true,
+        //disabled: true,
       },
     ],
   },
@@ -110,17 +110,17 @@ const Sidebar = (): JSX.Element => {
     >
       <Flex flex='1' bg='bg.surface' maxW={{ base: 'full', sm: 'xs' }} paddingX={4} paddingY={6}>
         <Stack justify='space-between' width='full'>
-          <Stack spacing='6' shouldWrapChildren>
+          {/* <Stack spacing='6' shouldWrapChildren>
             <Flex justifyContent='center'>
               <img width={160} src={IconImage} alt='IconImage' />
             </Flex>
             <Box bgColor='gray.300'>
               <Divider orientation='horizontal' />
             </Box>
-          </Stack>
+          </Stack> */}
           <Stack
             paddingX='6px'
-            marginTop='20px'
+            marginTop='5px'
             shouldWrapChildren
             overflow='hidden auto'
             height='100%'
@@ -142,7 +142,7 @@ const Sidebar = (): JSX.Element => {
               <NavLink to='/settings'>
                 <NavButton label='Settings' icon={FiSettings} />
               </NavLink>
-              <NavLink to='https://docs.squared.ai/guides/core-concepts'>
+              <NavLink to='https://outhad.com'>
                 <NavButton label='Documentation' icon={FiBookOpen} />
               </NavLink>
             </Stack>

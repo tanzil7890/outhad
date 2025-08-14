@@ -5,7 +5,7 @@
     "connector_type": "source",
     "category": "Data Lake",
     "sub_category": "Relational Database",
-    "documentation_url": "https://docs.squared.ai/guides/sources/data-sources/amazon_s3",
+    "documentation_url": "https://docs.outhad.ai/guides/sources/data-sources/amazon_s3",
     "github_issue_label": "source-amazons3",
     "icon": "icon.svg",
     "license": "MIT",

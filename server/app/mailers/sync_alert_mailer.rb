@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SyncAlertMailer < ApplicationMailer
-  default from: "AI Squared <ai2-mailer@squared.ai>"
+  default from: "AI Squared <ai2-mailer@outhad.ai>"
 
   def sync_success_email
     @alert_attrs = params

@@ -1,6 +1,6 @@
 
 {
-  "documentation_url": "https://docs.squared.ai/guides/destinations/retl-destinations/database/odoo",
+  "documentation_url": "https://docs.outhad.ai/guides/destinations/retl-destinations/database/odoo",
   "stream_type": "static",
   "connector_query_type": "raw_sql",
   "connection_specification": {

@@ -6,8 +6,8 @@ unless Rails.env.test?
     Rails.application.config.hosts << ENV["ALLOWED_HOST"]
   else
     # Enterprise SAAS deployments
-    Rails.application.config.hosts << ".squared.ai"
-    Rails.application.config.hosts << ".staging.squared.ai"
+    Rails.application.config.hosts << ".outhad.ai"
+    Rails.application.config.hosts << ".staging.outhad.ai"
     # Local development
     Rails.application.config.hosts << "localhost"
   end

@@ -4,7 +4,7 @@
     "title": "Qdrant",
     "connector_type": "destination",
     "category": "Database",
-    "documentation_url": "https://docs.squared.ai/guides/destinations/retl-destinations/database/qdrant",
+    "documentation_url": "https://docs.outhad.ai/guides/destinations/retl-destinations/database/qdrant",
     "github_issue_label": "destination-qdrant",
     "icon": "icon.svg",
     "license": "MIT",

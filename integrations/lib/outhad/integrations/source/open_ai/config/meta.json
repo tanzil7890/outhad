@@ -5,7 +5,7 @@
     "connector_type": "source",
     "category": "AI Model",
     "sub_category": "LLM",
-    "documentation_url": "https://docs.squared.ai/activation/ai-ml-sources/open_ai-model",
+    "documentation_url": "https://docs.outhad.ai/activation/ai-ml-sources/open_ai-model",
     "github_issue_label": "source-open-ai-model",
     "icon": "icon.svg",
     "license": "MIT",
