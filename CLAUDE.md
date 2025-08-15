@@ -138,6 +138,7 @@ The system manages:
 
 ## Git Commit Guidelines
 When making changes, always commit with proper industry-level practices:
+It should not contain: Co-Authored-By: Claude <noreply@anthropic.com>
 
 ### Commit Structure
 ```
