@@ -72,4 +72,73 @@ Rails.application.configure do
 
   # Highlight code that enables cache.
   config.cache_store = :memory_store
+
+  # ==========================================
+  # INTEGRATIONS GEM HOT RELOADING CONFIGURATION
+  # ==========================================
+  
+  # Add integrations path to autoload paths for hot reloading
+  integrations_lib_path = Rails.root.join("..", "integrations", "lib")
+  if File.directory?(integrations_lib_path)
+    config.autoload_paths << integrations_lib_path.to_s
+    config.autoload_once_paths << integrations_lib_path.to_s
+  end
+
+  # Set up file watcher for integrations directory
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Configure reloader to watch integrations directory
+  Rails.application.reloader.to_prepare do
+    begin
+      integrations_path = Rails.root.join("..", "integrations", "lib")
+      
+      if File.directory?(integrations_path) && defined?(Outhad::Integrations)
+        # Only attempt reloading if we're in a request context, not during initialization
+        if Rails.application.initialized?
+          Rails.logger&.debug "🔄 Preparing to reload integrations gem..."
+          
+          # Clear autoloaded constants that are safe to remove
+          integration_constants = []
+          begin
+            Outhad::Integrations.constants.each do |const_name|
+              begin
+                constant = Outhad::Integrations.const_get(const_name)
+                # Only remove module constants that are safe to reload
+                if constant.is_a?(Module) && const_name.to_s.match?(/^(Source|Destination|Core)$/)
+                  integration_constants << const_name
+                end
+              rescue NameError
+                # Skip constants that are not accessible
+                next
+              end
+            end
+
+            # Remove only safe constants
+            integration_constants.each do |const_name|
+              begin
+                if Outhad::Integrations.const_defined?(const_name)
+                  Outhad::Integrations.send(:remove_const, const_name)
+                  Rails.logger&.debug "Removed constant: #{const_name}"
+                end
+              rescue => e
+                Rails.logger&.debug "Could not remove constant #{const_name}: #{e.message}"
+              end
+            end
+          rescue => e
+            Rails.logger&.debug "Error during constant enumeration: #{e.message}"
+          end
+        end
+      end
+    rescue => e
+      Rails.logger&.error "Error in integrations reloader: #{e.message}"
+    end
+  end
+
+  # Add integrations directory to watchable files
+  config.watchable_files.concat Dir[Rails.root.join("..", "integrations", "lib", "**", "*.rb")]
+
+  # Log after Rails is fully initialized
+  config.after_initialize do
+    Rails.logger.info "🔥 Integrations hot reloading enabled - integrations gem will reload on file changes"
+  end
 end
