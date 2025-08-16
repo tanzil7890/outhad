@@ -5,14 +5,15 @@ interface NavButtonProps extends ButtonProps {
   icon: As;
   label: string;
   disabled?: boolean;
+  isCollapsed?: boolean;
 }
 
 export const NavButton = (props: NavButtonProps): JSX.Element => {
-  const { icon, label, isActive, disabled } = props;
+  const { icon, label, isActive, disabled, isCollapsed = false } = props;
   return (
     <Button
       variant='tertiary'
-      justifyContent='start'
+      justifyContent={isCollapsed ? 'center' : 'start'}
       backgroundColor={isActive ? 'gray.300' : 'none'}
       _hover={!disabled ? { bg: 'gray.300' } : {}}
       marginBottom='10px'
@@ -20,14 +21,19 @@ export const NavButton = (props: NavButtonProps): JSX.Element => {
       size='sm'
       isDisabled={disabled}
       height='36px'
+      title={isCollapsed ? label : undefined}
     >
-      <HStack spacing='2'>
+      {isCollapsed ? (
         <Icon as={icon} boxSize='4' color={isActive ? 'black.500' : 'gray.600'} />
-        <Text color='black.500' fontWeight={isActive ? 'semibold' : 'medium'} size='sm'>
-          {label}
-        </Text>
-        {disabled ? <Badge text='weaving soon' variant='default' /> : <></>}
-      </HStack>
+      ) : (
+        <HStack spacing='2'>
+          <Icon as={icon} boxSize='4' color={isActive ? 'black.500' : 'gray.600'} />
+          <Text color='black.500' fontWeight={isActive ? 'semibold' : 'medium'} size='sm'>
+            {label}
+          </Text>
+          {disabled ? <Badge text='weaving soon' variant='default' /> : <></>}
+        </HStack>
+      )}
     </Button>
   );
 };

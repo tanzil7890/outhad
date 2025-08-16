@@ -16,6 +16,10 @@ import Profile from './Profile';
 import Workspace from './Workspace/Workspace';
 import NavButton from './NavButton';
 
+interface SidebarProps {
+  isCollapsed?: boolean;
+}
+
 type MenuItem = {
   title: string;
   link: string;
@@ -66,9 +70,9 @@ const menus: MenuArray = [
   },
 ];
 
-const renderMenuSection = (section: MenuSection, index: number) => (
+const renderMenuSection = (section: MenuSection, index: number, isCollapsed: boolean = false) => (
   <Stack key={index}>
-    {section.heading && (
+    {section.heading && !isCollapsed && (
       <Box paddingX='16px'>
         <Text size='xs' color='gray.600' fontWeight='bold' letterSpacing='2.4px'>
           {section.heading}
@@ -84,6 +88,7 @@ const renderMenuSection = (section: MenuSection, index: number) => (
               icon={menuItem.Icon}
               isActive={isActive}
               disabled={menuItem.disabled}
+              isCollapsed={isCollapsed}
             />
           )}
         </NavLink>
@@ -92,13 +97,13 @@ const renderMenuSection = (section: MenuSection, index: number) => (
   </Stack>
 );
 
-const SideBarFooter = () => (
+const SideBarFooter = ({ isCollapsed }: { isCollapsed: boolean }) => (
   <Stack>
-    <Profile />
+    {!isCollapsed && <Profile />}
   </Stack>
 );
 
-const Sidebar = (): JSX.Element => {
+const Sidebar = ({ isCollapsed = false }: SidebarProps): JSX.Element => {
   return (
     <Flex
       position='relative'
@@ -108,17 +113,33 @@ const Sidebar = (): JSX.Element => {
       borderRightWidth='1px'
       borderRightStyle='solid'
       borderRightColor='gray.400'
-      minWidth='240px'
+      minWidth={isCollapsed ? '60px' : '240px'}
+      width={isCollapsed ? '60px' : '240px'}
+      transition='all 0.3s ease'
     >
-      <Flex flex='1' bg='bg.surface' maxW={{ base: 'full', sm: 'xs' }} paddingX={4} paddingY={6}>
+      <Flex
+        flex='1'
+        bg='bg.surface'
+        maxW={{ base: 'full', sm: isCollapsed ? '60px' : 'xs' }}
+        paddingX={isCollapsed ? 2 : 4}
+        paddingY={6}
+      >
         <Stack justify='space-between' width='full'>
           <Stack spacing='6' shouldWrapChildren>
-            <Flex justifyContent='center'>
-              <img width={160} src={IconImage} alt='IconImage' />
-            </Flex>
-            <Box bgColor='gray.300'>
-              <Divider orientation='horizontal' />
-            </Box>
+            {!isCollapsed ? (
+              <>
+                <Flex justifyContent='center'>
+                  <img width={160} src={IconImage} alt='IconImage' />
+                </Flex>
+                <Box bgColor='gray.300'>
+                  <Divider orientation='horizontal' />
+                </Box>
+              </>
+            ) : (
+              <Flex justifyContent='center'>
+                <img width={32} src={IconImage} alt='IconImage' />
+              </Flex>
+            )}
           </Stack>
           <Stack
             paddingX='6px'
@@ -137,19 +158,19 @@ const Sidebar = (): JSX.Element => {
             justify='space-between'
           >
             <Stack spacing='16px'>
-              {menus.map(renderMenuSection)}
+              {menus.map((section, index) => renderMenuSection(section, index, isCollapsed))}
             </Stack>
             <Stack spacing='0'>
               <NavLink to='/settings'>
-                <NavButton label='Settings' icon={FiSettings} />
+                <NavButton label='Settings' icon={FiSettings} isCollapsed={isCollapsed} />
               </NavLink>
-              <Workspace />
-             {/*  <NavLink to='https://docs.outhad.ai/guides/core-concepts'>
-                <NavButton label='Documentation' icon={FiBookOpen} />
+              {!isCollapsed && <Workspace />}
+              {/*  <NavLink to='https://docs.outhad.ai/guides/core-concepts'>
+                <NavButton label='Documentation' icon={FiBookOpen} isCollapsed={isCollapsed} />
               </NavLink> */}
             </Stack>
           </Stack>
-          <SideBarFooter />
+          <SideBarFooter isCollapsed={isCollapsed} />
         </Stack>
       </Flex>
     </Flex>

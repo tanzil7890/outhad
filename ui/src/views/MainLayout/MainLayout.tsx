@@ -9,14 +9,16 @@ import { CustomToastStatus } from '@/components/Toast';
 import ServerError from '../ServerError';
 import getTitle from '@/utils/getPageTitle';
 
-import { Box } from '@chakra-ui/layout';
+import { Box, IconButton } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
+import { FiMenu } from 'react-icons/fi';
 
 import { getWorkspaces } from '@/services/settings';
 import { useStore } from '@/stores';
 
 const MainLayout = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const { contentContainerId } = useUiConfig();
   const location = useLocation();
   useEffect(() => {
@@ -71,7 +73,29 @@ const MainLayout = (): JSX.Element => {
 
   return (
     <Box display='flex' width={'100%'} overflow='hidden' maxHeight='100vh'>
-      <Sidebar />
+      <Sidebar isCollapsed={isSidebarCollapsed} />
+      <IconButton
+        aria-label='Toggle sidebar'
+        icon={<FiMenu />}
+        position='absolute'
+        top={1}
+        left={isSidebarCollapsed ? '72px' : '252px'}
+        zIndex={1000}
+        bg='white'
+        border='2px solid'
+        borderColor='gray.400'
+        borderRadius='md'
+        size='md'
+        minW='auto'
+        h='30px'
+        w='30px'
+        p={1}
+        onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+        _hover={{ bg: 'gray.100', borderColor: 'gray.500' }}
+        shadow='lg'
+        color='gray.700'
+        transition='left 0.3s ease'
+      />
       <Box
         pl={0}
         width={'100%'}
@@ -83,6 +107,7 @@ const MainLayout = (): JSX.Element => {
         overflow='scroll'
         id={contentContainerId}
         backgroundColor='gray.200'
+        position='relative'
       >
         <Outlet />
       </Box>
