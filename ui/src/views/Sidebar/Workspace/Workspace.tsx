@@ -96,7 +96,7 @@ const Workspace = () => {
               <Box
                 _hover={{ bgColor: 'gray.300' }}
                 w='100%'
-                py='8px'
+                py='6px'
                 px='12px'
                 display='flex'
                 flexDir='row'
