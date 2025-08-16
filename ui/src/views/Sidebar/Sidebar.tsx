@@ -48,17 +48,19 @@ const menus: MenuArray = [
   },
   {
     heading: 'DEFINE',
-    menu: [{ title: 'Models', link: '/define/models', Icon: FiTable }],
+    menu: [{ title: 'Models', link: '/define/models', Icon: FiTable },
+      { title: 'Syncs', link: '/activate/syncs', Icon: FiRefreshCcw },
+    ],
   },
   {
     heading: 'ACTIVATE',
     menu: [
-      { title: 'Syncs', link: '/activate/syncs', Icon: FiRefreshCcw },
+      //{ title: 'Syncs', link: '/activate/syncs', Icon: FiRefreshCcw },
       {
         title: 'Audiences',
         link: '/audiences',
         Icon: FiUsers,
-        //disabled: true,
+        disabled: false,
       },
     ],
   },
@@ -110,17 +112,17 @@ const Sidebar = (): JSX.Element => {
     >
       <Flex flex='1' bg='bg.surface' maxW={{ base: 'full', sm: 'xs' }} paddingX={4} paddingY={6}>
         <Stack justify='space-between' width='full'>
-          {/* <Stack spacing='6' shouldWrapChildren>
+          <Stack spacing='6' shouldWrapChildren>
             <Flex justifyContent='center'>
               <img width={160} src={IconImage} alt='IconImage' />
             </Flex>
             <Box bgColor='gray.300'>
               <Divider orientation='horizontal' />
             </Box>
-          </Stack> */}
+          </Stack>
           <Stack
             paddingX='6px'
-            marginTop='5px'
+            marginTop='10px'
             shouldWrapChildren
             overflow='hidden auto'
             height='100%'
@@ -135,16 +137,16 @@ const Sidebar = (): JSX.Element => {
             justify='space-between'
           >
             <Stack spacing='16px'>
-              <Workspace />
               {menus.map(renderMenuSection)}
             </Stack>
             <Stack spacing='0'>
               <NavLink to='/settings'>
                 <NavButton label='Settings' icon={FiSettings} />
               </NavLink>
-              <NavLink to='https://outhad.com'>
+              <Workspace />
+             {/*  <NavLink to='https://docs.outhad.ai/guides/core-concepts'>
                 <NavButton label='Documentation' icon={FiBookOpen} />
-              </NavLink>
+              </NavLink> */}
             </Stack>
           </Stack>
           <SideBarFooter />
