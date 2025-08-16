@@ -98,8 +98,8 @@ const renderMenuSection = (section: MenuSection, index: number, isCollapsed: boo
 );
 
 const SideBarFooter = ({ isCollapsed }: { isCollapsed: boolean }) => (
-  <Stack>
-    {!isCollapsed && <Profile />}
+  <Stack align={isCollapsed ? 'center' : 'stretch'}>
+    <Profile isCollapsed={isCollapsed} />
   </Stack>
 );
 
