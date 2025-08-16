@@ -156,9 +156,9 @@ RSpec.describe Outhad::Integrations::Source::Firecrawl::Client do
         "success" => true,
         "data" =>
           {
-            "markdown" => "[AI Squared home page](https://docs.outhad.ai)",
+            "markdown" => "[AI Outhad home page](https://docs.outhad.ai)",
             "metadata" => {
-              "title" => "Welcome - AI Squared",
+              "title" => "Welcome - AI Outhad",
               "og:url" => "https://docs.outhad.ai/home/welcome",
               "language" => "en",
               "url" => "Test.com"
