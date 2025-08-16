@@ -55,7 +55,7 @@ module OuthadServer
     config.action_mailer.perform_deliveries = true
     host = ENV.fetch('SMTP_HOST', 'outhad.ai')
     config.action_mailer.default_url_options = { host: host }
-    brand_name = ENV['BRAND_NAME'].presence || 'AI Squared'
+    brand_name = ENV['BRAND_NAME'].presence || 'AI Outhad'
     smtp_sender_email = ENV['SMTP_SENDER_EMAIL'].presence || 'ai2-mailer@outhad.ai'
     config.x.mail_from = "#{brand_name} <#{smtp_sender_email}>"
     config.action_mailer.smtp_settings = {

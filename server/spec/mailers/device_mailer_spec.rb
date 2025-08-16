@@ -29,7 +29,7 @@ RSpec.describe DeviseMailer, type: :mailer do
 
     it "contains the inviter's name and workspace name in the body" do
       expect(mail.body.encoded)
-        .to match("#{inviter.name} has invited you to use AI Squared with them, " \
+        .to match("#{inviter.name} has invited you to use AI Outhad with them, " \
           "in a company called #{workspace.organization.name}")
     end
 
@@ -122,7 +122,7 @@ RSpec.describe DeviseMailer, type: :mailer do
       ]
       expect(mail.body.encoded).to match("Verify your email")
       expect(mail.body.encoded)
-        .to match("To complete signup and start using AI Squared, just click the verification button below.")
+        .to match("To complete signup and start using AI Outhad, just click the verification button below.")
       doc = Nokogiri::HTML(mail.body.encoded)
       link = doc.at_css("a")["href"]
       reset_url = "https://example.com/verify-user?#{URI.encode_www_form(query_params)}"
